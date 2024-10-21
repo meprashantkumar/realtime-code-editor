@@ -7,6 +7,15 @@ const app = express();
 
 const server = http.createServer(app);
 
+function runAfterEvery5Seconds() {
+  console.log("This function runs every 5 seconds");
+  setTimeout(runAfterEvery5Seconds, 5000);
+}
+
+// Start the loop
+runAfterEvery5Seconds();
+
+
 const io = new Server(server, {
   cors: {
     origin: "*",
