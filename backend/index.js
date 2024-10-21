@@ -7,13 +7,28 @@ const app = express();
 
 const server = http.createServer(app);
 
-function runAfterEvery5Seconds() {
-  console.log("This function runs every 5 seconds");
-  setTimeout(runAfterEvery5Seconds, 5000);
+const url = `https://realtime-code-editor-zwp3.onrender.com`;
+const interval = 30000;
+
+function reloadWebsite() {
+  axios
+    .get(url)
+    .then((response) => {
+      console.log(
+        `Reloaded at ${new Date().toISOString()}: Status Code ${
+          response.status
+        }`
+      );
+    })
+    .catch((error) => {
+      console.error(
+        `Error reloading at ${new Date().toISOString()}:`,
+        error.message
+      );
+    });
 }
 
-// Start the loop
-runAfterEvery5Seconds();
+setInterval(reloadWebsite, interval);
 
 
 const io = new Server(server, {
