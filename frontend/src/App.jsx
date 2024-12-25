@@ -132,7 +132,7 @@ const App = () => {
           value={language}
           onChange={handleLanguageChange}
         >
-          <option value="javasript">JavaScript</option>
+          <option value="javascript">JavaScript</option>
           <option value="python">Python</option>
           <option value="java">Java</option>
           <option value="cpp">C++</option>
