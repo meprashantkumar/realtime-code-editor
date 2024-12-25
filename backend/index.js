@@ -2,35 +2,10 @@ import express from "express";
 import http from "http";
 import { Server } from "socket.io";
 import path from "path";
-import axios from 'axios';
 
 const app = express();
 
 const server = http.createServer(app);
-
-const url = `https://realtime-code-editor-zwp3.onrender.com`;
-const interval = 30000;
-
-function reloadWebsite() {
-  axios
-    .get(url)
-    .then((response) => {
-      console.log(
-        `Reloaded at ${new Date().toISOString()}: Status Code ${
-          response.status
-        }`
-      );
-    })
-    .catch((error) => {
-      console.error(
-        `Error reloading at ${new Date().toISOString()}:`,
-        error.message
-      );
-    });
-}
-
-setInterval(reloadWebsite, interval);
-
 
 const io = new Server(server, {
   cors: {
